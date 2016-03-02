@@ -117,7 +117,7 @@ class WeedOperation(object):
 
             # choose a random location
             location = locations[random.randint(0, len(locations) - 1)]
-            full_url = 'http://%s/%s' % (location['url'], fid)
+            full_url = 'http://%s/%s' % (location['publicUrl'], fid)
         except Exception as e:
             LOGGER.error('Could not get volume location of this fid: %s. Exception is: %s' % (fid, e))
         return full_url
@@ -203,7 +203,7 @@ class WeedOperation(object):
                 # print(wak)
                 _fid = wak.fid
                 LOGGER.debug('no fid. accquired new one: "%s"' % _fid)
-                fid_full_url = wak.fid_full_url
+                fid_full_url = wak.fid_full_publicUrl
             else:
                 fid_full_url = self.get_fid_full_url(fid)
         except Exception as e:
